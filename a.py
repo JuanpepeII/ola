@@ -25,9 +25,9 @@ color3 = color_original
 
 # listas que contendran las preguntas y respuestas
 preguntas = ["Mega quiz matematico", "Como se llama el numero ubicado arriba de una fraccion?", "Si el lado de un cuadrado es 9cm ¿Cuanto mide su area?", "Si un dulce vale $330 ¿cuantos dulces puedo comprar con $1200?", "Resuelve la ecuacion \n2x + 4 = 72", "Es la suma iterada de un numero", "Nombre del angulo que mide 90°", "Cual es el unico numero primo par?", "Cuantos segundos hay en un dia?", "Felicidades! Estos fueron tus resultados"]
-respuestas1 = ["Jugar", "Numerador", "18cm", "4 dulces", "x = 32", "Division", "Agudo", "2", "100,000 segundos", " "]
+respuestas1 = ["Jugar", "Numerador", "18cm", "3 dulces", "x = 32", "Division", "Agudo", "2", "100,000 segundos", " "]
 respuestas2 = ["Salir", "Denominador", "24cm", "5 dulces", "x = 34", "Potencia", "Recto", "4", "12,500 segundos", "Muchas gracias por jugar"]
-respuestas3 = ["", "Juan", "81cm", "3 dulces", "x = 39", "Multiplicacion", "Extendido", "6", "86,400 segundos", "Salir"]
+respuestas3 = ["", "Juan", "81cm", "4 dulces", "x = 39", "Multiplicacion", "Extendido", "6", "86,400 segundos", "Salir"]
 
 # Cajas donde se colocara texto con preguntas o respuestas
 BOX = Rect((192, 30), (640, 120)) 
