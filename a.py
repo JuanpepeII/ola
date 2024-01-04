@@ -24,10 +24,10 @@ color3 = color_original
 
 
 # listas que contendran las preguntas y respuestas
-preguntas = ["Mega quiz matematico", "Como se llama el numero ubicado arriba de una fraccion?", "Si el lado de un cuadrado es 9cm ¿Cuanto mide su area?", "Si un dulce vale $330 ¿cuantos dulces puedo comprar con $1200?", "Resuelve la ecuacion \n2x + 4 = 72", "Es la suma iterada de un numero", "Nombre del angulo que mide 90°", "Cual es el unico numero primo par?", "Cuantos segundos hay en un dia?", " "]
+preguntas = ["Mega quiz matematico", "Como se llama el numero ubicado arriba de una fraccion?", "Si el lado de un cuadrado es 9cm ¿Cuanto mide su area?", "Si un dulce vale $330 ¿cuantos dulces puedo comprar con $1200?", "Resuelve la ecuacion \n2x + 4 = 72", "Es la suma iterada de un numero", "Nombre del angulo que mide 90°", "Cual es el unico numero primo par?", "Cuantos segundos hay en un dia?", "Felicidades! Estos fueron tus resultados"]
 respuestas1 = ["Jugar", "Numerador", "18cm", "4 dulces", "x = 32", "Division", "Agudo", "2", "100,000 segundos", " "]
-respuestas2 = ["Salir", "Denominador", "24cm", "5 dulces", "x = 34", "Potencia", "Recto", "4", "12,500 segundos", " "]
-respuestas3 = ["", "Juan", "81cm", "3 dulces", "x = 39", "Multiplicacion", "Extendido", "6", "86,400 segundos", " "]
+respuestas2 = ["Salir", "Denominador", "24cm", "5 dulces", "x = 34", "Potencia", "Recto", "4", "12,500 segundos", "Muchas gracias por jugar"]
+respuestas3 = ["", "Juan", "81cm", "3 dulces", "x = 39", "Multiplicacion", "Extendido", "6", "86,400 segundos", "Salir"]
 
 # Cajas donde se colocara texto con preguntas o respuestas
 BOX = Rect((192, 30), (640, 120)) 
@@ -44,10 +44,10 @@ BoxOutline4 = Rect((242, 410), (540, 120))
 def draw(): # El valor de level en cada if define el nivel que esta dibujando, a excepción del level == 0, -1 y 9
     global level
     global preguntas
-    global respuestas1
     global respuestas2
+    global respuestas1
     global respuestas3
-    if level < 9: # Menú
+    if level < 10: # Menú y niveles
         screen.fill((255, 249, 249)) # Color del fondo
         screen.draw.filled_rect(BoxOutline, "black") # Esta caja se coloca por detras de la caja blanca para simular un borde
         screen.draw.filled_rect(BOX, "white") # Cuadrado blanco que portará el titulo del juego
@@ -68,31 +68,12 @@ def draw(): # El valor de level en cada if define el nivel que esta dibujando, a
 
         screen.draw.text("Hecho por: \nMauricio Rivera \nSamantha Neira", (2, 521), color="black") # texto inferior izquierda
         screen.draw.text("Todos los derechos reservados ©", (745, 556), color="black") # Copyright, inferior derecha
-
-    if level == -1:
-        print("Hola mundo")
-        si += 1 # Crashea el juego a proposito para salir.
-
-
-
-    if level == 9:
-        screen.clear()
-        screen.fill((255, 249, 249))
-        screen.draw.filled_rect(BoxOutline, "black")
-        screen.draw.filled_rect(BOX, "white")
-        screen.draw.textbox("Felicidades! Estos fueron tus resultados", BOX, color="black")
-
+        
+    if level == 9: # Se dibuja otro cuadro aparte en la pantalla final, ya que no se actualiza el numero de respuestas correctas dentro de la lista
         screen.draw.filled_rect(BoxOutline2, "black")
         screen.draw.filled_rect(BOX2, color1)
         screen.draw.textbox(f"{points}/8 respuestas correctas!", BOX2, color="black")
 
-        screen.draw.filled_rect(BoxOutline3, "black")
-        screen.draw.filled_rect(BOX3, color2)
-        screen.draw.textbox("Muchas gracias por jugar", BOX3, color="black")
-
-        screen.draw.filled_rect(BoxOutline4, "black")
-        screen.draw.filled_rect(BOX4, color3)
-        screen.draw.textbox("Salir", BOX4, color="black")
 
 
 def update():
@@ -131,8 +112,8 @@ def on_mouse_down(pos):  # Interacciones con los botones en pantalla
                 points += 1
                 print("Respuesta correcta!\n")
                 color2 = color_bien
-            elif level == 0: # Boton salir del menú
-                level += -1
+            elif level == 0: # Boton salir del menú, se crashea el juego a proposito
+                si += 1
             elif level > 0: # De no estar en los niveles 4 o 6, si se apreta esta caja, mostrará el mensaje de respuesta incorrecta y el cuadro se volvera rojo
                 print("Respuesta incorrecta!\n")
                 color2 = color_mal
@@ -146,8 +127,8 @@ def on_mouse_down(pos):  # Interacciones con los botones en pantalla
                 points += 1
                 print("Respuesta correcta!\n")
                 color3 = color_bien
-            elif level == 9: # Boton salir pantalla final
-                level = -1
+            elif level == 9: # Boton salir pantalla final, se crashea el juego a proposito
+                si += 1
             elif level > 0: # De no estar en los niveles 2, 5 u 8, si se apreta esta caja, mostrará el mensaje de respuesta incorrecta y el cuadro se volvera rojo
                 print("Respuesta incorrecta!\n")
                 color3 = color_mal
